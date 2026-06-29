@@ -50,18 +50,18 @@ I am working under the supervision of [Carlos Velasco](https://economics.uc3m.es
 **Locally Robust Semiparametric Estimation of Parametric Conditional Gini** <br>
 *with Vedant Bhardwaj, Juan Carlos Escanciano, and Joel R. Terschuur*
 
-> We derive the influence functions for functionals of conditional distributions to propose locally robust estimation and inference for Gini Index Regression (GIR) models. We consider three alternative model specifications as leading examples, and the resulting procedures are robust to first-stage, nonparametric kernel estimation of the conditional distribution function.
+> We derive the influence functions for functionals of conditional distributions to propose locally robust estimation and inference for Gini Index Regression (GIR) models. We consider three alternative model specifications as leading examples, and the resulting procedures are robust to first-stage, nonparametric kernel estimation of the conditional distribution function. We illustrate our theoretical findings via Monte Carlo experiments and an empirical application.
 
 **A Durbin–FGLS Approach to Robust Inference for Time Series Regression**
 
-> We propose a feasible generalized least squares estimator based on time series Durbin regressions. The estimator is consistent under much weaker exogeneity assumptions than standard OLS exogeneity, allowing the number of first-stage lagged regressors to grow with the sample size. It is also more efficient than existing FGLS variants proposed in the literature. Theoretical results are illustrated via Monte Carlo experiments.
+> The paper proposes a feasible generalized least squares estimator based on time series Durbin regressions. The estimator is consistent under much weaker exogeneity assumptions than standard OLS exogeneity, allowing the number of first-stage lagged regressors to grow with the sample size. It is also consistent when the existing FGLS variants proposed in the literature are not, and when they are, also fully efficient. Theoretical results on consistency and robust inference are illustrated via Monte Carlo experiments.
 
 ## Teaching
 
 **Universidad Carlos III de Madrid** — Teaching Assistant (2022–present)
 
-- **Probability and Statistics**, Preliminary Course (Ph.D. in Economics; Fall 2024–2026). Slides: [Day 1](assets/slides/Statistics_Day_1_Slides.pdf), [Day 2](assets/slides/Statistics_Day_2_Slides.pdf), [Day 3](assets/slides/Statistics_Day_3_Slides.pdf), [Day 4](assets/slides/Statistics_Day_4_Slides.pdf), [Day 5](assets/slides/Statistics_Day_5_Slides.pdf).
-- **Mathematics**, Preliminary Course (M.Sc. in Economic Development and Growth; Fall 2024–2026).
+- **Probability and Statistics**, graduate (Preliminary Course, Ph.D. in Economics; Fall 2024–2026). Slides: [Day 1](assets/slides/Statistics_Day_1_Slides.pdf), [Day 2](assets/slides/Statistics_Day_2_Slides.pdf), [Day 3](assets/slides/Statistics_Day_3_Slides.pdf), [Day 4](assets/slides/Statistics_Day_4_Slides.pdf), [Day 5](assets/slides/Statistics_Day_5_Slides.pdf).
+- **Mathematics**, graduate (Preliminary Course, M.Sc. in Economic Development and Growth; Fall 2024–2026).
 - **Econometrics**, undergraduate (Spring 2023–2026).
 - **Quantitative Microeconomics**, undergraduate (Fall 2025 & 2023).
 - **Time Series Econometrics**, undergraduate (Fall 2024).
