@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+.netlify/
+
+# Local-only tooling and working files (not part of the website)
+.claude/
+dvd_cv.txt

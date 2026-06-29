@@ -1,0 +1,14 @@
+# Netlify configuration — this is a plain static site, no build step.
+# Netlify just publishes the repository root as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Make sure markdown is served with a sensible content type so the
+# browser's fetch() reads content.md as text.
+[[headers]]
+  for = "/content.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    Cache-Control = "public, max-age=0, must-revalidate"

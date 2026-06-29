@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>David Díaz-Villarejo</title>
+  <meta name="description" content="David Díaz-Villarejo — Ph.D. candidate in Economics at Universidad Carlos III de Madrid. Econometrics: time series, semiparametric methods, and the measurement of inequality.">
+  <meta name="author" content="David Díaz-Villarejo">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="data:,">
+
+  <!--
+    ============================================================
+    David Díaz-Villarejo — academic site (template: mvazcar.com)
+    Plain, light, single static page. Content is loaded from
+    content.md, so to update the site you only edit that file.
+    Drop this folder on Netlify as-is.
+    ============================================================
+  -->
+
+  <style>
+    :root{
+      --bg:#ffffff; --text:#070000; --heading:#222; --h2:#393939;
+      --link:#0B4DA2; --link-hover:#083a7d; --border:#e5e5e5;
+      --muted:#777; --surface:#f4f4f4; --rule:#d4d4d4;
+    }
+
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%; font-size:clamp(14px, 13px + 0.2vw, 17px)}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font:1rem/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Helvetica Neue",Arial,sans-serif;
+      font-weight:400;
+    }
+
+    /* ---------- Layout ---------- */
+    .wrapper{width:min(100% - 5rem, 58rem); margin:0 auto; padding:52px 0 0}
+    .masthead{text-align:center}
+    .masthead h1{margin:0 0 18px; font-size:1.9rem; font-weight:500; color:var(--heading); line-height:1.15; letter-spacing:.01em}
+    .masthead::after{content:""; display:block; width:120px; height:1px; margin:18px auto 26px; background:var(--rule); border-radius:2px}
+    /* Single column by default; auto-switches to two columns when a photo is present */
+    .cols{display:block}
+    .right-side{min-width:0; max-width:40rem; margin:0 auto; padding-bottom:50px}
+    .cols:has(.photo){display:flex; gap:46px; align-items:flex-start}
+    .cols:has(.photo) .left-side{flex:0 0 300px; width:300px}
+    .cols:has(.photo) .right-side{flex:1 1 auto; max-width:560px; margin:0}
+
+    /* ---------- Sidebar: photo ---------- */
+    .photo{
+      width:100%; border:1px solid var(--border); border-radius:6px; background:var(--surface);
+    }
+    img.photo{display:block; height:auto; object-fit:cover}
+
+    /* Optional link buttons under the photo */
+    .contact-links{margin-top:20px; display:flex; flex-wrap:wrap; gap:12px; justify-content:center}
+    .contact-links a{
+      display:inline-flex; align-items:center; justify-content:center; gap:.4ch;
+      min-width:44px; height:40px; padding:0 12px;
+      font-size:15px; font-weight:500; color:var(--link); text-decoration:none;
+      border:1px solid var(--border); border-radius:5px;
+    }
+    .contact-links a:hover{background:var(--surface); color:var(--link-hover)}
+
+    /* ---------- Content ---------- */
+    .right-side p{margin:0 0 16px}
+    a{color:var(--link); text-decoration:none}
+    a:hover{color:var(--link-hover)}
+    a:focus-visible{outline:2px solid var(--link); outline-offset:2px; border-radius:2px}
+    strong{font-weight:500; color:var(--heading)}
+    em{color:var(--muted)}
+
+    .right-side hr{border:0; height:1px; background:var(--rule); margin:24px 0}
+
+    h2{color:var(--h2); font-size:1.25rem; font-weight:500; line-height:1.1; margin:28px 0 14px}
+    h3{color:var(--h2); font-size:1.08rem; font-weight:500; line-height:1.2; margin:22px 0 10px}
+    .right-side ul{margin:0 0 18px; padding-left:0; list-style:none}
+    .right-side li{margin:0 0 8px}
+
+    /* ---------- Paper action buttons + collapsible abstract ---------- */
+    .right-side [hidden]{display:none}
+    .paper-actions{display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 16px}
+    .toggle-abstract, .paper-actions .btn{
+      font:inherit; font-size:.82rem; font-weight:500; line-height:1.3;
+      color:var(--link); background:transparent; cursor:pointer;
+      border:1px solid var(--border); border-radius:5px; padding:4px 12px;
+      display:inline-flex; align-items:center; gap:.45ch; text-decoration:none;
+    }
+    .toggle-abstract:hover, .paper-actions .btn:hover{background:var(--surface); color:var(--link-hover)}
+    .toggle-abstract::after{content:"\25B8"; display:inline-block; transition:transform .15s ease}
+    .toggle-abstract.open::after{transform:rotate(90deg)}
+    .abstract{margin:0 0 18px; padding:12px 14px; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:var(--text)}
+    .abstract p{margin:0}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:760px){
+      .wrapper{width:min(100% - 40px, 920px); padding-top:40px}
+      .cols:has(.photo){flex-direction:column; gap:26px}
+      .cols:has(.photo) .left-side{flex:none; width:100%; max-width:300px; margin:0 auto}
+      .cols:has(.photo) .right-side{max-width:none}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <header class="masthead">
+      <h1 id="site-name">David Díaz-Villarejo</h1>
+    </header>
+
+    <div class="cols">
+      <!-- LEFT: photo (filled from the first image in content.md) -->
+      <aside class="left-side">
+        <!-- Optional buttons — uncomment and edit to add links under the photo:
+        <div class="contact-links">
+          <a href="assets/ddiavil_cv.pdf" target="_blank" rel="noopener">CV</a>
+          <a href="mailto:ddiazvil@eco.uc3m.es">Email</a>
+        </div>
+        -->
+      </aside>
+
+      <!-- RIGHT: main content (filled from content.md) -->
+      <main class="right-side">
+        <p>Loading…</p>
+      </main>
+    </div>
+  </div>
+
+  <script src="assets/marked.min.js"></script>
+  <script>
+    marked.setOptions({ gfm: true, breaks: false });
+
+    fetch('content.md', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function (md) {
+        var temp = document.createElement('div');
+        temp.innerHTML = marked.parse(md);
+
+        // First heading becomes the centered masthead name.
+        var h1 = temp.querySelector('h1');
+        if (h1) {
+          var name = h1.textContent.trim();
+          document.getElementById('site-name').textContent = name;
+          document.title = name;
+          h1.remove();
+        }
+
+        // First image becomes the sidebar photo.
+        var img = temp.querySelector('img');
+        if (img) {
+          var wrap = img.closest('p');
+          img.classList.add('photo');
+          document.querySelector('.left-side').insertBefore(img, document.querySelector('.left-side').firstChild);
+          if (wrap && !wrap.textContent.trim() && !wrap.querySelector('img')) wrap.remove();
+        }
+
+        // Everything else is the main content.
+        var right = document.querySelector('.right-side');
+        right.innerHTML = temp.innerHTML;
+
+        // Each abstract (written as a blockquote in content.md) collapses
+        // behind an "Abstract" button, hidden by default.
+        right.querySelectorAll('blockquote').forEach(function (bq) {
+          bq.classList.add('abstract');
+          bq.setAttribute('hidden', '');
+
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'toggle-abstract';
+          btn.textContent = 'Abstract';
+          btn.setAttribute('aria-expanded', 'false');
+
+          var actions = document.createElement('div');
+          actions.className = 'paper-actions';
+          actions.appendChild(btn);
+          bq.parentNode.insertBefore(actions, bq);
+
+          btn.addEventListener('click', function () {
+            var hidden = bq.hasAttribute('hidden');
+            if (hidden) {
+              bq.removeAttribute('hidden');
+              btn.setAttribute('aria-expanded', 'true');
+              btn.classList.add('open');
+            } else {
+              bq.setAttribute('hidden', '');
+              btn.setAttribute('aria-expanded', 'false');
+              btn.classList.remove('open');
+            }
+          });
+        });
+      })
+      .catch(function (err) {
+        console.error(err);
+        document.querySelector('.right-side').innerHTML =
+          '<p>Could not load <code>content.md</code>. If you opened this file directly from disk, ' +
+          'run a local web server (see <code>README.md</code>). On Netlify it works automatically.</p>';
+      });
+  </script>
+
+</body>
+</html>
