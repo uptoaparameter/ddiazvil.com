@@ -30,7 +30,7 @@ I specialize in Econometrics, with a focus on time series, semiparametric method
 
 My research develops econometric theory and turns it into tools for applied work on labor markets and inequality.
 
-Here is my [CV](assets/ddiavil_cv.pdf).
+Here is my [CV](assets/ddiazvil_cv.pdf).
 
 You can reach me at [ddiazvil@eco.uc3m.es](mailto:ddiazvil@eco.uc3m.es).
 
