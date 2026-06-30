@@ -69,7 +69,3 @@ I am working under the supervision of [Carlos Velasco](https://economics.uc3m.es
 - **Mathematics for Economics II**, undergraduate (Spring 2022).
 
 *Teaching Excellence Awards in Econometrics and Quantitative Microeconomics.*
-
-**UNIE Universidad** — Lecturer (Fall 2025)
-
-- **Financial Mathematics**, undergraduate (Business Administration).
