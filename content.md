@@ -62,6 +62,7 @@ I am working under the supervision of [Carlos Velasco](https://economics.uc3m.es
 
 - **Probability and Statistics**, graduate (Preliminary Course, Ph.D. in Economics; Fall 2024–2026). Slides: [Day 1](assets/slides/Statistics_Day_1_Slides.pdf), [Day 2](assets/slides/Statistics_Day_2_Slides.pdf), [Day 3](assets/slides/Statistics_Day_3_Slides.pdf), [Day 4](assets/slides/Statistics_Day_4_Slides.pdf), [Day 5](assets/slides/Statistics_Day_5_Slides.pdf).
 - **Mathematics**, graduate (Preliminary Course, M.Sc. in Economic Development and Growth; Fall 2024–2026).
+- **Introduction to Mathematics**, undergraduate (Fall 2026).
 - **Econometrics**, undergraduate (Spring 2023–2026).
 - **Quantitative Microeconomics**, undergraduate (Fall 2025 & 2023).
 - **Time Series Econometrics**, undergraduate (Fall 2024).
