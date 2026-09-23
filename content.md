@@ -26,6 +26,8 @@
 
 I am a Ph.D. candidate in Economics at Universidad Carlos III de Madrid.
 
+I am on the 2026-27 Econ Job Market.
+
 I specialize in Econometrics, with a focus on time series, semiparametric methods, and the measurement of inequality.
 
 My research develops econometric theory and turns it into tools for applied work on labor markets and inequality.
