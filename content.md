@@ -24,9 +24,9 @@
 
 # David Díaz-Villarejo
 
-**I am a Ph.D. candidate in Economics at Universidad Carlos III de Madrid.**
+I am a Ph.D. candidate in Economics at Universidad Carlos III de Madrid.
 
-I am on the 2026-27 Econ Job Market.
+**I am on the 2026-27 Econ Job Market.**
 
 I specialize in Econometrics, with a focus on time series, semiparametric methods, and the measurement of inequality.
 
