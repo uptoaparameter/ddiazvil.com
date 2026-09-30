@@ -48,11 +48,11 @@ I am working under the supervision of [Carlos Velasco](https://economics.uc3m.es
 **Locally Robust Semiparametric Estimation of Parametric Conditional Gini** <br>
 *with Vedant Bhardwaj, Juan Carlos Escanciano, and Joel R. Terschuur*
 
-> We derive the influence functions for functionals of conditional distributions to propose locally robust estimation and inference for Gini Index Regression (GIR) models. We consider three alternative model specifications as leading examples, and the resulting procedures are robust to first-stage, nonparametric kernel estimation of the conditional distribution function. We illustrate our theoretical findings via Monte Carlo experiments and an empirical application.
+> Using the influence function for functionals of conditional distributions, we propose locally robust estimation and inference for Gini Index Regression (GIR) models. We consider three alternative model specifications as leading examples, and the resulting procedures are robust to first-stage, nonparametric kernel estimation of the conditional distribution function. We illustrate our theoretical findings via Monte Carlo experiments and an empirical application.
 
 **A Durbin–FGLS Approach to Robust Inference for Time Series Regression**
 
-> The paper proposes a feasible generalized least squares estimator based on time series Durbin regressions. The estimator is consistent under much weaker exogeneity assumptions than standard OLS exogeneity, allowing the number of first-stage lagged regressors to grow with the sample size. It is also consistent when the existing FGLS variants proposed in the literature are not, and when they are, also fully efficient. Theoretical results on consistency and robust inference are illustrated via Monte Carlo experiments.
+> The paper proposes a new feasible generalized least squares estimator based on time series Durbin regressions. The estimator is shown to be consistent under much weaker exogeneity assumptions than the standard OLS exogeneity, allowing the number of first-stage lagged regressors to grow with the sample size. It is also consistent when the existing FGLS variants proposed in the literature are not, and when they are, also fully efficient. Theoretical results on consistency and robust inference are illustrated via Monte Carlo experiments.
 
 ## Teaching
 
