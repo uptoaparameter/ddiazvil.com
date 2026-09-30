@@ -28,9 +28,7 @@ I am a Ph.D. candidate in Economics at Universidad Carlos III de Madrid.
 
 **I am on the 2026-27 Econ Job Market.** This is my [Job Market Paper](assets/papers/JMP_GIR_DiazVillarejo.pdf).
 
-I specialize in Econometrics, with a focus on time series, semiparametric methods, and the measurement of inequality.
-
-My research develops econometric theory and turns it into tools for applied work on labor markets and inequality.
+I work in econometric theory, with a focus on time series, semiparametric methods, and concentration measures such as the Gini index.
 
 Here is my [CV](assets/ddiazvil_cv.pdf). You can reach me at [ddiazvil@eco.uc3m.es](mailto:ddiazvil@eco.uc3m.es).
 
