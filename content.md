@@ -42,7 +42,7 @@ I am working under the supervision of [Carlos Velasco](https://economics.uc3m.es
 
 ## Job Market Paper
 
-**[Gini Index Regression](assets/papers/gini-index-regression.pdf)** <br>
+**[Gini Index Regression](assets/papers/JMP_GIR_DiazVillarejo.pdf)** <br>
 *with Vedant Bhardwaj*
 
 > We propose a parametric model for the conditional Gini index, in the spirit of mean and quantile regression. We derive the moment condition for a general parametric specification and develop the econometric theory for the linear case: identification results, including under model misspecification, a loss function for the conditional Gini index, an R²-type goodness-of-fit measure, a Gini Index Regression (GIR) estimator, and bootstrap-based inference. An empirical application to U.S. labor market data reveals substantially higher inequality among non-union workers and shows that, among the college-educated and controlling for characteristics, occupation, and industry, inequality is modest at labor market entry — consistent with the skill-biased technical change hypothesis — but rises sharply with experience.
