@@ -9,6 +9,18 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="data:,">
 
+  <script>
+    // Apply the saved/system theme before the page is painted.
+    (function () {
+      var savedTheme = null;
+      try { savedTheme = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+
   <!--
     ============================================================
     David Díaz-Villarejo — academic site (template: mvazcar.com)
@@ -23,6 +35,13 @@
       --bg:#ffffff; --text:#070000; --heading:#222; --h2:#393939;
       --link:#0B4DA2; --link-hover:#083a7d; --border:#e5e5e5;
       --muted:#777; --surface:#f4f4f4; --rule:#d4d4d4;
+      color-scheme:light;
+    }
+    html.dark{
+      --bg:#14161a; --text:#e8e8e8; --heading:#f2f2f2; --h2:#dcdcdc;
+      --link:#7aa6e0; --link-hover:#a3c2ec; --border:#2b2e34;
+      --muted:#a0a0a0; --surface:#1c1f24; --rule:#2b2e34;
+      color-scheme:dark;
     }
 
     *{box-sizing:border-box}
@@ -30,11 +49,11 @@
     body{
       margin:0; background:var(--bg); color:var(--text);
       font:1rem/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Helvetica Neue",Arial,sans-serif;
-      font-weight:400;
+      font-weight:400; transition:background-color .15s ease, color .15s ease;
     }
 
     /* ---------- Layout ---------- */
-    .wrapper{width:min(100% - 5rem, 58rem); margin:0 auto; padding:52px 0 0}
+    .wrapper{width:min(100% - 5rem, 58rem); margin:0 auto; padding:52px 0 0; position:relative}
     .masthead{text-align:center}
     .masthead h1{margin:0 0 18px; font-size:1.9rem; font-weight:500; color:var(--heading); line-height:1.15; letter-spacing:.01em}
     .masthead::after{content:""; display:block; width:120px; height:1px; margin:18px auto 26px; background:var(--rule); border-radius:2px}
@@ -44,6 +63,17 @@
     .cols:has(.photo){display:flex; gap:46px; align-items:flex-start}
     .cols:has(.photo) .left-side{flex:0 0 300px; width:300px}
     .cols:has(.photo) .right-side{flex:1 1 auto; max-width:560px; margin:0}
+
+    /* ---------- Light/dark theme ---------- */
+    .theme-toggle{
+      position:absolute; top:4px; right:0;
+      width:36px; height:36px; padding:0; border-radius:50%;
+      border:1px solid var(--border); background:transparent; color:var(--link);
+      cursor:pointer; font:inherit; font-size:16px; line-height:1;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .theme-toggle:hover{background:var(--surface)}
+    .theme-toggle:focus-visible{outline:2px solid var(--link); outline-offset:2px}
 
     /* ---------- Sidebar: photo ---------- */
     .photo{
@@ -100,15 +130,23 @@
     /* ---------- Responsive ---------- */
     @media (max-width:760px){
       .wrapper{width:min(100% - 40px, 920px); padding-top:40px}
+      .theme-toggle{position:static; margin:0 auto 18px}
       .cols:has(.photo){flex-direction:column; gap:26px}
       .cols:has(.photo) .left-side{flex:none; width:100%; max-width:300px; margin:0 auto}
       .cols:has(.photo) .right-side{max-width:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      body{transition:none}
     }
   </style>
 </head>
 <body>
 
   <div class="wrapper">
+
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
+      <span id="themeIcon" aria-hidden="true">🌙</span>
+    </button>
 
     <header class="masthead">
       <h1 id="site-name">David Díaz-Villarejo</h1>
@@ -140,6 +178,33 @@
 
   <script src="assets/marked.min.js"></script>
   <script>
+    // ---------- Light/dark theme toggle ----------
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('themeToggle');
+      var icon = document.getElementById('themeIcon');
+      var themeColor = document.querySelector('meta[name="theme-color"]');
+
+      function applyTheme(theme, remember) {
+        var isDark = theme === 'dark';
+        root.classList.toggle('dark', isDark);
+        icon.textContent = isDark ? '☀️' : '🌙';
+        button.setAttribute('aria-pressed', String(isDark));
+        button.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        button.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+        themeColor.setAttribute('content', isDark ? '#14161a' : '#ffffff');
+        if (remember) {
+          try { localStorage.setItem('theme', theme); } catch (e) {}
+        }
+      }
+
+      applyTheme(root.classList.contains('dark') ? 'dark' : 'light', false);
+
+      button.addEventListener('click', function () {
+        applyTheme(root.classList.contains('dark') ? 'light' : 'dark', true);
+      });
+    })();
+
     marked.setOptions({ gfm: true, breaks: false });
 
     fetch('content.md', { cache: 'no-cache' })
