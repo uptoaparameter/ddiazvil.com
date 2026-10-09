@@ -97,32 +97,10 @@
     .abstract{margin:0 0 18px; padding:12px 14px; background:var(--surface); border:1px solid var(--border); border-radius:6px; color:var(--text)}
     .abstract p{margin:0}
 
-    /* ---------- Privacy and analytics consent ---------- */
-    [hidden]{display:none !important}
+    /* ---------- Privacy ---------- */
     .site-footer{
       width:min(100% - 40px, 58rem); margin:0 auto; padding:0 0 24px;
-      display:flex; justify-content:center; gap:14px; color:var(--muted); font-size:.78rem;
-    }
-    .site-footer button{
-      padding:0; border:0; color:var(--link); background:transparent;
-      font:inherit; cursor:pointer;
-    }
-    .site-footer button:hover{color:var(--link-hover)}
-    .consent-banner{
-      position:fixed; z-index:10; left:50%; bottom:18px; transform:translateX(-50%);
-      width:min(calc(100% - 32px), 46rem); padding:18px 20px;
-      color:var(--text); background:var(--bg); border:1px solid var(--border);
-      border-radius:7px; box-shadow:0 8px 30px rgba(0,0,0,.16);
-    }
-    .consent-banner p{margin:0 0 14px}
-    .consent-actions{display:flex; flex-wrap:wrap; justify-content:flex-end; gap:10px}
-    .consent-button{
-      min-height:38px; padding:7px 14px; border:1px solid var(--link); border-radius:5px;
-      color:var(--link); background:var(--bg); font:inherit; font-weight:500; cursor:pointer;
-    }
-    .consent-button:hover{color:#fff; background:var(--link)}
-    .consent-button:focus-visible, .site-footer button:focus-visible{
-      outline:2px solid var(--link); outline-offset:2px;
+      text-align:center; color:var(--muted); font-size:.78rem;
     }
 
     /* ---------- Responsive ---------- */
@@ -131,8 +109,6 @@
       .cols:has(.photo){flex-direction:column; gap:26px}
       .cols:has(.photo) .left-side{flex:none; width:100%; max-width:300px; margin:0 auto}
       .cols:has(.photo) .right-side{max-width:none}
-      .consent-actions{justify-content:stretch}
-      .consent-button{flex:1 1 10rem}
     }
   </style>
 </head>
@@ -170,21 +146,7 @@
 
   <footer class="site-footer">
     <a href="privacy.html">Privacy &amp; analytics</a>
-    <button type="button" id="privacy-settings">Privacy settings</button>
   </footer>
-
-  <div class="consent-banner" id="analytics-consent" role="dialog"
-       aria-labelledby="consent-title" aria-describedby="consent-description" hidden>
-    <p id="consent-description">
-      <strong id="consent-title">Optional analytics</strong><br>
-      With your permission, this site uses Google Analytics to understand visits and improve the site.
-      Analytics is not loaded unless you accept. See <a href="privacy.html">privacy &amp; cookie details</a>.
-    </p>
-    <div class="consent-actions">
-      <button class="consent-button" type="button" id="reject-analytics">Reject analytics</button>
-      <button class="consent-button" type="button" id="accept-analytics">Accept analytics</button>
-    </div>
-  </div>
 
   <script src="assets/marked.min.js"></script>
   <script>
@@ -260,103 +222,23 @@
   <script>
     (function () {
       var measurementId = 'G-QHVMZS49RG';
-      var consentKey = 'ddiazvil-analytics-consent';
-      var consentLifetime = 365 * 24 * 60 * 60 * 1000;
-      var banner = document.getElementById('analytics-consent');
-      var acceptButton = document.getElementById('accept-analytics');
-      var rejectButton = document.getElementById('reject-analytics');
-      var settingsButton = document.getElementById('privacy-settings');
-      var analyticsLoaded = false;
 
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-      window.gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        analytics_storage: 'denied'
+
+      // Keep local development and Netlify deploy previews out of production reports.
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname.endsWith('.netlify.app')) return;
+
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+      document.head.appendChild(script);
+
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
       });
-
-      function readConsent() {
-        try {
-          var saved = JSON.parse(localStorage.getItem(consentKey));
-          if (!saved || !saved.choice || !saved.savedAt) return null;
-          if (Date.now() - saved.savedAt > consentLifetime) {
-            localStorage.removeItem(consentKey);
-            return null;
-          }
-          return saved.choice;
-        } catch (err) {
-          return null;
-        }
-      }
-
-      function saveConsent(choice) {
-        try {
-          localStorage.setItem(consentKey, JSON.stringify({ choice: choice, savedAt: Date.now() }));
-        } catch (err) {
-          // The choice still applies for this page if browser storage is unavailable.
-        }
-      }
-
-      function loadAnalytics() {
-        if (analyticsLoaded) return;
-        analyticsLoaded = true;
-        window.gtag('consent', 'update', { analytics_storage: 'granted' });
-
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
-        document.head.appendChild(script);
-
-        window.gtag('js', new Date());
-        window.gtag('config', measurementId, {
-          allow_google_signals: false,
-          allow_ad_personalization_signals: false
-        });
-      }
-
-      function clearAnalyticsCookies() {
-        document.cookie.split(';').forEach(function (cookie) {
-          var name = cookie.split('=')[0].trim();
-          if (name === '_ga' || name.indexOf('_ga_') === 0 || name === '_gid' || name.indexOf('_gat') === 0) {
-            document.cookie = name + '=; Max-Age=0; path=/';
-            document.cookie = name + '=; Max-Age=0; path=/; domain=' + location.hostname;
-            document.cookie = name + '=; Max-Age=0; path=/; domain=.' + location.hostname;
-          }
-        });
-      }
-
-      function hideBanner() {
-        banner.hidden = true;
-        settingsButton.focus();
-      }
-
-      acceptButton.addEventListener('click', function () {
-        saveConsent('granted');
-        loadAnalytics();
-        hideBanner();
-      });
-
-      rejectButton.addEventListener('click', function () {
-        var wasLoaded = analyticsLoaded;
-        saveConsent('denied');
-        window.gtag('consent', 'update', { analytics_storage: 'denied' });
-        clearAnalyticsCookies();
-        hideBanner();
-        if (wasLoaded) location.reload();
-      });
-
-      settingsButton.addEventListener('click', function () {
-        banner.hidden = false;
-        rejectButton.focus();
-      });
-
-      if (readConsent() === 'granted') {
-        loadAnalytics();
-      } else if (readConsent() === null) {
-        banner.hidden = false;
-      }
     })();
   </script>
 
