@@ -24,9 +24,9 @@
   <!--
     ============================================================
     David Díaz-Villarejo — academic site (template: mvazcar.com)
-    Plain, light, single static page. Content is loaded from
+    Plain, light/dark, single static page. Content is loaded from
     content.md, so to update the site you only edit that file.
-    Drop this folder on Netlify as-is.
+    GitHub Pages publishes these static files directly.
     ============================================================
   -->
 
@@ -269,8 +269,7 @@
       .catch(function (err) {
         console.error(err);
         document.querySelector('.right-side').innerHTML =
-          '<p>Could not load <code>content.md</code>. If you opened this file directly from disk, ' +
-          'run a local web server (see <code>README.md</code>). On Netlify it works automatically.</p>';
+          '<p>The page content could not be loaded. Please refresh the page or try again shortly.</p>';
       });
   </script>
 
@@ -281,8 +280,8 @@
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
-      // Keep local development and Netlify deploy previews out of production reports.
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname.endsWith('.netlify.app')) return;
+      // Only the public domain contributes to production reports.
+      if (location.hostname !== 'ddiazvil.com' && location.hostname !== 'www.ddiazvil.com') return;
 
       var script = document.createElement('script');
       script.async = true;
